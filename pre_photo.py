@@ -1,15 +1,8 @@
 # 图示展示数据集中的情况 种类-数量
 import matplotlib.pyplot as plt
-import matplotlib
 import json
 
-data_path = 'E:/Project/Python/Garbage/Data/test/data_num.json'
-font = {
-    'family': 'SimHei',
-    'weight': 'bold',
-    'size': 12
-}
-matplotlib.rc("font", **font)
+data_path = '../Data/test/data_num.json'
 
 
 def get_data():
@@ -19,9 +12,10 @@ def get_data():
 
 def draw_plt():
     data = get_data()
+    plt.figure(figsize=(16, 9), dpi=80)
+    plt.rcParams['font.sans-serif'] = ['SimHei']
     plt.ylabel('Type')
     plt.xlabel('Num')
-    plt.figure(figsize=(16, 9), dpi=80)
     x = list(data.keys())
     y = list(data.values())
     r = plt.barh(x, y, height=0.5)
