@@ -2,22 +2,20 @@
 import matplotlib.pyplot as plt
 import json
 
-data_path = 'E:/Project/Python/Garbage/Data/test/data_num.json'  # 类型-num文件所在的文件夹
-photo_path = 'E:/Project/Python/Garbage/Data/test/statistics_result.jpg'  # 保存统计结果
 
-
-def get_data():
+def get_data(data_path):
     # 获取数据
     with open(data_path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 
-def draw_plt():
-    data = get_data()
+def draw_plt(photo_path, data_path, title):
+    data = get_data(data_path)  # 读取数据
     plt.figure(figsize=(16, 9), dpi=100)  # 图片的分辨率
     plt.rcParams['font.sans-serif'] = ['SimHei']  # 图片的字体
-    plt.ylabel('Num')  # y坐标名
-    plt.xlabel('Type')  # x坐标名
+    plt.ylabel('Type')  # y坐标名
+    plt.xlabel('Num')  # x坐标名
+    plt.title(title)  # 图表标题
     x = list(data.keys())  # x 类型
     y = list(data.values())  # y 数量
     r = plt.barh(x, y, height=0.5)  # 横着的坐标图
@@ -27,7 +25,3 @@ def draw_plt():
         plt.text(wd, rect.get_y() + 0.5 / 2, str(wd), va='center')
     plt.savefig(photo_path)  # 保存图片
     plt.show()  # 显示图片
-
-
-if __name__ == '__main__':
-    draw_plt()

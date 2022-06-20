@@ -1,20 +1,25 @@
 # 移动文件
+# 需要先将所有要移动的文件的文件名(可以有后缀名/也可以没有)保存在一个txt文件中
 
 import shutil
 import os
 
-old_path = r'E:/Project/Python/Garbage/Data/train_val_0629/VOC2007/Annotations'  # 源文件所在位置
-new_path = r'E:/Project/Python/Garbage/Data/test/message'  # 要将文件复制到的位置
-file_path = r'E:/Project/Python/Garbage/Data/train_val.txt'  # 保存了图片文件名的文件
-
 
 # 从文件中获取要拷贝的文件的信息
-def get_filename_from_txt(file):
+def get_filename_from_txt(file, s):
+    """
+    :param file: 文件所在
+    :param s: 提供的后缀名，为空表示保存文件中含有后缀名
+    :return: 文件名列表
+    """
     file_name_lists = []
     with open(file, 'r', encoding='utf-8') as f:
         lists = f.readlines()
         for one in lists:
-            file_name_lists.append(str(one).strip('\n'))
+            if s:
+                file_name_lists.append(str(one).strip('\n') + s)  # 保存的文件名不含有后缀
+            else:
+                file_name_lists.append(str(one).strip('\n'))  # 保存的文件名含有后缀
     return file_name_lists
 
 
@@ -31,12 +36,3 @@ def my_copy(src_path, dst_path, file_name):
         else:
             # 不存在的话将文件信息打印出来
             print(file_name)
-
-
-if __name__ == "__main__":
-    # 执行获取文件信息的程序
-    filename_lists = get_filename_from_txt(file_path)
-    print(filename_lists)
-    # 根据获取的信息进行遍历输出
-    for filename in filename_lists:
-        my_copy(old_path, new_path, filename)
