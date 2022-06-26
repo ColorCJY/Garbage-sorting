@@ -17,7 +17,7 @@ pytorch == 1.11.0 (若GPU：CUDA == 11.3)
 
 ## 项目结构
 
-在windows里文件管理为 E:/Project/Python/Garbage
+在windows里文件管理为 xxx/Garbage-sorting
 
 具体如下：
 
@@ -54,8 +54,9 @@ Garbage
 1.请按照以上项目结构中的存放格式进行文件的放置（'-'的数量表示目录的级数）
 2.注意安装所额外需要的库
 3.运行顺序
-（Tips：下面第一个文件可以跳过使用源数据集，但需要注意其他的更改）
-deal_some_datas.py（Tip：形成自己的数据集，结束后可以手动删除源数据集了）
-divide_file.py（Tip：总的显示训练集，分割训练集，图形化展示）
+（Tips：注意某些文件夹可能需要手动创建）
+deal_some_datas.py（Tip：形成自己的数据集分类规则）
+divide_file.py（Tip：分割数据集，使用分好的数据不用运行，之前的数据集可以删除）
+read_file.py （Tip：统计数量，显示数据集情况，并保存数据集情况）
 ```
 

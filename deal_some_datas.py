@@ -1,14 +1,13 @@
-# 对源数据集进行一些处理，成为自己的数据集
-# 处理完后可以手动删除源数据集
+# 处理分类规则文件成为自己的分类规则
 
 
 import json
-from move_file import *
+import os
 
 
 def deal_file_name():
-    path = "E:/Project/Python/Garbage/garbage_classify/raw_data"  # 源数据图片及其信息所在文件夹
-    res_path = 'E:/Project/Python/Garbage/Data/train_val/main/train_val.txt'  # 保存图片文件名文件
+    path = "./garbage_classify/raw_data"  # 源数据图片及其信息所在文件夹
+    res_path = './Data/train_val/main/train_val.txt'  # 保存图片文件名文件
     l1 = [set() for i in range(5)]  # 便于按文件最后的数字进行排序
     datas = os.listdir(path)  # 获取文件下的所有文件
     for i in datas:
@@ -25,9 +24,9 @@ def deal_file_name():
 
 
 def deal_rule():
-    path1 = "E:/Project/Python/Garbage/garbage_classify/garbage_classify_rule.json"  # 源数据集的分类信息
-    res_path1 = "E:/Project/Python/Garbage/Data/classify_rule.json"  # 四分类规则
-    res_path2 = "E:/Project/Python/Garbage/Data/train_classes.json"  # 多分类规则
+    path1 = "./garbage_classify/garbage_classify_rule.json"  # 源数据集的分类信息
+    res_path1 = "./Data/classify_rule.json"  # 四分类规则
+    res_path2 = "./Data/train_classes.json"  # 多分类规则
     res1 = {}
     res2 = {}
     # 读取
@@ -45,30 +44,11 @@ def deal_rule():
     print(res1)
     print(res2)
     with open(res_path1, 'w', encoding='UTF-8') as f:
-        json.dump(res1, f, indent=2)
+        json.dump(res1, f, indent=2, ensure_ascii=False)
     with open(res_path2, 'w', encoding='UTF-8') as f:
-        json.dump(res2, f, indent=2)
-
-
-def move_files():  # 移动文件
-    old_path = r'E:/Project/Python/Garbage/garbage_classify/raw_data'  # 源文件所在位置
-    new_path = r'E:/Project/Python/Garbage/Data/train_val/photo'  # 要将文件复制到的位置
-    file_path = r'E:/Project/Python/Garbage/Data/train_val/main/train_val.txt'  # 保存了图片文件名的文件
-    filename_lists = get_filename_from_txt(file_path, '.jpg')
-    print(filename_lists)
-    # 根据获取的信息进行遍历输出
-    for filename in filename_lists:
-        my_copy(old_path, new_path, filename)
-    new_path = r'E:/Project/Python/Garbage/Data/train_val/message'  # 要将文件复制到的位置
-    filename_lists = get_filename_from_txt(file_path, '.txt')
-    print(filename_lists)
-    # 根据获取的信息进行遍历输出
-    for filename in filename_lists:
-        my_copy(old_path, new_path, filename)  # 复制
+        json.dump(res2, f, indent=2, ensure_ascii=False)
 
 
 if __name__ == '__main__':
     deal_file_name()
     deal_rule()
-    # 可以不移动，用源数据集，但要注意其他程序文件中的一些处理会有更改
-    # move_files()
