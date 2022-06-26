@@ -22,7 +22,7 @@ def train():
     # 训练C类别的分类问题，用CrossEntropyLoss(交叉熵损失函数)
     criterion = nn.CrossEntropyLoss()
     # 优化器
-    optimizer = torch.optim.Adam44(model.model.parameters(), learning_rate)
+    optimizer = torch.optim.Adam(model.model.parameters(), learning_rate)
     best_acc = 0
     for e in range(1, epoch + 1):
         print('[{}/{}] Training'.format(e, epoch))
