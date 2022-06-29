@@ -7,7 +7,6 @@ import torch
 import torch.nn as nn
 from hubconf import *
 from utils import AverageMeter, accuracy
-from progress.bar import Bar
 
 
 class run_train:

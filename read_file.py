@@ -6,13 +6,13 @@ from statistics_photo import draw_plt, json
 
 def save_json(file_name, dit):
     # 保存为json文件
-    with open('./Data/' + file_name, 'w', encoding='UTF-8') as f:
+    with open('./Data/App_Data/' + file_name, 'w', encoding='UTF-8') as f:
         json.dump(dit, f, indent=2, ensure_ascii=False)
 
 
 def get_class_nums():
     data_path = './Data/train_val/photo/'  # 图片文件集位置
-    with open('./Data/train_classes.json', 'r', encoding='UTF-8') as f:
+    with open('./Data/App_Data/train_classes.json', 'r', encoding='UTF-8') as f:
         train_classes = json.load(f)  # 读取序号：类型的json文件
     kinds_num = {}  # 总数据的类型：数量json文件
     train_num = {}  # 训练集的类型：数量json文件
@@ -35,9 +35,9 @@ def get_class_nums():
 
 def view_train_val():
     # 图片显示，并保存
-    draw_plt('./Data/train_val.jpg', './Data/kinds_num.json', '数据集情况')
-    draw_plt('./Data/train_num.jpg', './Data/train_num.json', '训练集情况')
-    draw_plt('./Data/test_num.jpg', './Data/test_num.json', '测试集情况')
+    draw_plt('./Data/img/train_val.jpg', './Data/App_Data/kinds_num.json', '数据集情况')
+    draw_plt('./Data/img/train_num.jpg', './Data/App_Data/train_num.json', '训练集情况')
+    draw_plt('./Data/img/test_num.jpg', './Data/App_Data/test_num.json', '测试集情况')
 
 
 if __name__ == '__main__':

@@ -25,8 +25,8 @@ def deal_file_name():
 
 def deal_rule():
     path1 = "./garbage_classify/garbage_classify_rule.json"  # 源数据集的分类信息
-    res_path1 = "./Data/classify_rule.json"  # 四分类规则
-    res_path2 = "./Data/train_classes.json"  # 多分类规则
+    res_path1 = "./Data/App_Data/classify_rule.json"  # 四分类规则
+    res_path2 = "./Data/App_Data/train_classes.json"  # 多分类规则
     res1 = {}
     res2 = {}
     # 读取

@@ -30,12 +30,10 @@ def divide_file():  # 分割数据集
     with open(file_path + 'train_set.txt', 'w', encoding='UTF-8') as f:
         for i in train_set:
             f.write(i + '\n')
-    # get_num("train_num.json", "train_kinds.json", "train_set.txt", p_1, p_2, '训练集情况')
     # 测试集
     with open(file_path + 'test_set.txt', 'w', encoding='UTF-8') as f:
         for i in test_set:
             f.write(i + '\n')
-    # get_num("test_num.json", "test_kinds.json", "test_set.txt", p_1, p_2, '测试集情况')
 
 
 # 拷贝文件到新的文件夹中
@@ -83,7 +81,7 @@ def move_files():
         file_kind[s[0]] = s[1]
         my_copy(old_path, new_path + 'message', i + '.txt')
         my_copy(old_path, new_path + 'photo/test/' + s[1], i + '.jpg')
-    with open('./Data/file_kind.json', 'w', encoding='UTF-8') as f:
+    with open('./Data/App_Data/file_kind.json', 'w', encoding='UTF-8') as f:
         json.dump(file_kind, f, indent=2, ensure_ascii=False)
     print('完成')
 
