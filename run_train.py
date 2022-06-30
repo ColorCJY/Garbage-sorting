@@ -1,9 +1,9 @@
 # 模型的选择构建、训练、评估
 
 import time
-
-import numpy as np
+import os
 import torch
+import numpy as np
 import torch.nn as nn
 from hubconf import *
 from utils import AverageMeter, accuracy
@@ -18,6 +18,8 @@ class run_train:
 
     # 模型的相关设置
     def setup_model(self, num_classes, feature_extract):
+        # 切换下载到本地的预训练模型的路径
+        os.environ['TORCH_HOME'] = './Data/train_val/model'
         # 选择resnext101_32x16d_wsl模型进行学习
         model = resnext101_32x16d_wsl()
 

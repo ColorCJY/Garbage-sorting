@@ -3,7 +3,7 @@ import torch
 import json
 from PIL import Image
 from run_train import run_train
-from train_parse import num_classes
+from train_parse import num_classes, pretrain
 from utils import preprocess
 
 
@@ -29,6 +29,8 @@ def change_index():
 class predict:
     def __init__(self):
         self.model_path = './Data/train_val/model/best_checkpoint.pth'  # 模型所在位置
+        while pretrain:
+            pretrain.pop()
         self.model = run_train(num_classes).model  # 用之前的训练模型（因为是迁移学习，所以需要进行更换成训练时的模型）
         self.model.load_state_dict(torch.load(self.model_path)['state_dict'])  # 加载模型的参数状态
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')  # 选择进行计算的单元

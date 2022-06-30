@@ -10,6 +10,7 @@ from run_train import run_train
 
 def train():
     # 加载数据
+    pretrain.append('True')
     TRAIN = train_path
     VAL = test_path
     train_data = datasets.ImageFolder(root=TRAIN, transform=preprocess)

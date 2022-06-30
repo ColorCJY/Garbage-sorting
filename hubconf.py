@@ -1,4 +1,4 @@
-# Facebook开源框架
+# Facebook开源框架 进行了一些修改
 # Copyright (c) Facebook, Inc. and its affiliates.
 # All rights reserved.
 #
@@ -8,6 +8,7 @@
 # Optional list of dependencies required by the package
 dependencies = ['torch', 'torchvision']
 
+from train_parse import pretrain
 from torch.hub import load_state_dict_from_url
 from torchvision.models.resnet import ResNet, Bottleneck
 
@@ -21,8 +22,9 @@ model_urls = {
 
 def _resnext(arch, block, layers, pretrained, progress, **kwargs):
     model = ResNet(block, layers, **kwargs)
-    state_dict = load_state_dict_from_url(model_urls[arch], progress=progress)
-    model.load_state_dict(state_dict)
+    if pretrained:
+        state_dict = load_state_dict_from_url(model_urls[arch], progress=progress)
+        model.load_state_dict(state_dict)
     return model
 
 
@@ -49,7 +51,11 @@ def resnext101_32x16d_wsl(progress=True, **kwargs):
     """
     kwargs['groups'] = 32
     kwargs['width_per_group'] = 16
-    return _resnext('resnext101_32x16d', Bottleneck, [3, 4, 23, 3], True, progress, **kwargs)
+    if pretrain:
+        p = True
+    else:
+        p = False
+    return _resnext('resnext101_32x16d', Bottleneck, [3, 4, 23, 3], p, progress, **kwargs)
 
 
 def resnext101_32x32d_wsl(progress=True, **kwargs):

@@ -7,7 +7,9 @@
 
 进行了数据的统计、分割、简单预处理，读取采用datasets和DataLoader
 
-训练完成后，在一个利用pyqt5开发的界面上进行预测展示
+训练完成后，在一个利用pyqt5开发的界面上进行预测展示，识别40种垃圾，并进行分类
+
+准确率：测试集上89.4%
 
 ## 项目环境
 
@@ -15,7 +17,7 @@
 目前的环境
 windows 11 + GTX1650 4G
 Anaconda -- python3.9 （自带安装了很多常用的库）
-pytorch == 1.11.0 (若GPU：CUDA == 11.3)（推荐官网安装）
+pytorch == 1.12.0 (若GPU：CUDA == 11.3)（推荐官网安装）
 pyqt5 == 5.15.7
 matplotlib == 3.5.1
 hubconf.py https://github.com/facebookresearch/WSL-Images/blob/main/hubconf.py (Facebook开源框架)
@@ -66,12 +68,23 @@ hubconf.py https://github.com/facebookresearch/WSL-Images/blob/main/hubconf.py (
     └─raw_data  # 图片及其信息位置
 ```
 
-代码库里只有项目代码，数据集另需下载，暂未提供来源
+数据集位置：
+
+源数据集：
+
+链接：https://pan.baidu.com/s/1sgBWm7jbUfdAX6yPObIjog?pwd=ppzr 
+
+这个文件解压后的garbage_classify这个文件夹按照上面的结构放置
+
+我自己分割的数据集：
+
+链接：https://pan.baidu.com/s/1_DclAAgRiwk8eB8SpaK_UQ?pwd=mm48 
+文件夹中的按照上述结构放置
 
 ## 项目运行
 
 ```
-1.请按照以上项目结构中的存放格式进行文件的放置
+1.请按照以上项目结构中的存放格式进行文件的放置（克隆项目，再自行修改）
 2.注意安装所额外需要的库
 3.运行顺序
 （Tips：注意某些文件夹可能需要手动创建）
@@ -81,9 +94,9 @@ hubconf.py https://github.com/facebookresearch/WSL-Images/blob/main/hubconf.py (
 （4）train.py （Tip：训练模型并保存）
 （5）main.py（Tip：进行可视化展示预测结果）
 注意：
-采用未分割的数据集，可以自行更改或者注意创建一些文件夹
+采用未分割的数据集，可以自行更改第（1）（2）（3）的处理
 采用分割好的数据集可以直接第4步
-若只是运行预测直接第5步
+若只是运行预测直接第5步，但是需要手动下载模型，程序有提示
 以上主要是一些文件位置会出现问题
 ```
 

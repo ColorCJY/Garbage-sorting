@@ -1,7 +1,6 @@
 # 利用pytorch进行随机分割训练集:测试集 = 8:2
 import shutil
 import sys
-import os
 import torch
 from tqdm import tqdm
 from read_file import *

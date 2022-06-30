@@ -1,4 +1,4 @@
-# 根据pytorch的例子https://github.com/pytorch/examples/blob/master/imagenet/main.py
+# 根据pytorch的例子 https://github.com/pytorch/examples/blob/master/imagenet/main.py
 # 以及别人的实现进行的一些修改，将一些需要的函数或类进行抽取出来，适当修改减少在一个文件中的代码
 import os
 import torch
